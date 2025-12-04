@@ -1,7 +1,7 @@
 streamlit
 numpy
 pandas
-opencv-python
+opencv-python-headless
 pillow
 matplotlib
 scipy
@@ -9,3 +9,4 @@ requests
 tqdm
 ultralytics
 typing_extensions
+

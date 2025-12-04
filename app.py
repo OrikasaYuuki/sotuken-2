@@ -9,7 +9,7 @@ import os
 # ====== 設定 ======
 # Gemini APIキー（安全のためファイルから読み込むのが望ましい）
 API_KEY_PATH = "./api_key.txt"
-MODEL_PATH = "./runs/detect/train5/weights/last.pt"
+MODEL_PATH = "./last.pt"
 MEMORY_PATH = "./memory.txt"
 JSON_PATH = "./json/result.json"
 
@@ -95,3 +95,4 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+

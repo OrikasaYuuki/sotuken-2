@@ -94,7 +94,7 @@ tqdm==4.67.1
 trio==0.30.0
 trio-websocket==0.12.2
 typing-inspection==0.4.1
-typing_extensions @ file:///C:/Users/Orikasa%20Yuuki/Downloads/typing_extensions-4.13.2-py3-none-any.whl#sha256=a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c
+typing_extensions==4.13.2
 tzdata==2025.2
 ultralytics==8.3.133
 ultralytics-thop==2.0.14
@@ -104,4 +104,5 @@ watchdog==6.0.0
 websocket-client==1.8.0
 websockets==15.0.1
 wsproto==1.2.0
+
 

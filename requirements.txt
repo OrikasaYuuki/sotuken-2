@@ -9,4 +9,4 @@ requests
 tqdm
 ultralytics
 typing_extensions
-
+google-generativeai

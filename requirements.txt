@@ -1,7 +1,7 @@
 streamlit
-numpy==1.26.4
+numpy
 pandas
-opencv-python-headless==4.7.0.72
+opencv-python-headless
 pillow
 matplotlib
 scipy
@@ -10,4 +10,5 @@ tqdm
 ultralytics
 typing_extensions
 google-generativeai
+
 

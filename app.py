@@ -6,6 +6,11 @@ import json
 import io
 import os
 
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
+import cv2
+cv2.imshow = lambda *args, **kwargs: None
+cv2.namedWindow = lambda *args, **kwargs: None
+
 # ====== 設定 ======
 # Gemini APIキー（安全のためファイルから読み込むのが望ましい）
 API_KEY_PATH = "./api_key.txt"
@@ -95,4 +100,5 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 

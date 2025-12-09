@@ -13,20 +13,11 @@ cv2.namedWindow = lambda *args, **kwargs: None
 
 # ====== 設定 ======
 # Gemini APIキー（安全のためファイルから読み込むのが望ましい）
-API_KEY_PATH = "./api_key.txt"
 MODEL_PATH = "./last.pt"
 MEMORY_PATH = "./memory.txt"
 JSON_PATH = "./json/result.json"
 
-if os.path.exists(API_KEY_PATH):
-    with open(API_KEY_PATH, "r") as f:
-        genai.configure(api_key=f.read().strip())
-else:
-    st.error("api_key.txt が見つかりません。Gemini APIキーを保存してください。")
-    st.stop()
-
-with open("memory.txt", "r" , encoding="utf-8") as f:
-    memory = f.read()
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 # YOLOモデル読み込み
 model = YOLO(MODEL_PATH)
@@ -100,5 +91,6 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 

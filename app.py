@@ -19,6 +19,9 @@ JSON_PATH = "./json/result.json"
 
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
+with open("memory.txt", "r" , encoding="utf-8") as f:
+    memory = f.read()
+    
 # YOLOモデル読み込み
 model = YOLO(MODEL_PATH)
 
@@ -91,6 +94,7 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

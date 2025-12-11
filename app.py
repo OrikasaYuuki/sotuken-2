@@ -84,6 +84,7 @@ if uploaded_file is not None:
     以下のJSONファイルについて分析し、重複したデータは1つにまとめてください。
     その上でclass_nameを日本語に直し、災害時に想定される被害を説明してください。
     JSONの中身は表示せず、被害説明のみを日本語で出力してください。
+    各オブジェクトに対する説明は80文字以内にしてください。
     ---
     {json.dumps(json_output, ensure_ascii=False, indent=2)}
     ---
@@ -94,6 +95,7 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

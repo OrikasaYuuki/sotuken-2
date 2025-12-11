@@ -1,0 +1,51 @@
+[
+  {
+    "image_id": "living.jpg",
+    "detections": [
+      {
+        "class_id": 5,
+        "class_name": "tv"
+      },
+      {
+        "class_id": 1,
+        "class_name": "sofa"
+      },
+      {
+        "class_id": 3,
+        "class_name": "table"
+      },
+      {
+        "class_id": 10,
+        "class_name": "potted plant"
+      },
+      {
+        "class_id": 4,
+        "class_name": "lamp"
+      },
+      {
+        "class_id": 2,
+        "class_name": "chair"
+      },
+      {
+        "class_id": 11,
+        "class_name": "photo frame"
+      },
+      {
+        "class_id": 11,
+        "class_name": "photo frame"
+      },
+      {
+        "class_id": 4,
+        "class_name": "lamp"
+      },
+      {
+        "class_id": 1,
+        "class_name": "sofa"
+      },
+      {
+        "class_id": 3,
+        "class_name": "table"
+      }
+    ]
+  }
+]

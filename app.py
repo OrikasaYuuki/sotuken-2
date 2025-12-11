@@ -6,6 +6,7 @@ import json
 import io
 import os
 
+
 os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"
 import cv2
 cv2.imshow = lambda *args, **kwargs: None
@@ -95,6 +96,7 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

@@ -91,11 +91,12 @@ if uploaded_file is not None:
     ---
     """
 
-    model_gemini = genai.GenerativeModel("gemini-2.0-flash")
+    model_gemini = genai.GenerativeModel("gemini-2.5-flash")
     with st.spinner("Geminiが被害を推定中です..."):
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

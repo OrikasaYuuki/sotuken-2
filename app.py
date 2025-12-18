@@ -27,9 +27,8 @@ with open("memory.txt", "r" , encoding="utf-8") as f:
 # YOLOモデル読み込み
 model = YOLO(MODEL_PATH)
 
-
 # ====== sidebar UI ======
-st.sidebar.title("test")
+st.sidebar.title("画像アップロード")
 st.sidebar.write("画像をアップロードすると、物体検出と被害予測を行います。")
 uploaded_file = st.sidebar.file_uploader("画像を選択してください", type=["jpg", "jpeg", "png"])
 
@@ -39,8 +38,6 @@ st.write("画像をアップロードすると、物体検出と被害予測を�
 
 with st.expander('変更記録'):
     st.text(memory)
-
-
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
@@ -108,6 +105,7 @@ if uploaded_file is not None:
             progress_bar.progress(i + 1)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

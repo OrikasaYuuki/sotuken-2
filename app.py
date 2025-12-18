@@ -54,7 +54,10 @@ if uploaded_file is not None:
         st.warning("画像から物体が検出されませんでした。" \
         "申し訳ありませんが、別の画像でお試しください。")
         st.stop()   # ← ここで処理を終了（Geminiへ進まない）
-
+    
+    # 検出結果の可視化
+    res_img = results[0].plot()
+    st.image(res_img, caption="検出結果", use_column_width=True)
     # 検出結果をJSONに変換
     detections = []
     class_names = [
@@ -79,7 +82,7 @@ if uploaded_file is not None:
     with open(JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(json_output, f, indent=2, ensure_ascii=False)
 
-    st.write("検出された物体:", [d["class_name"] for d in detections])
+    # st.write("検出された物体:", [d["class_name"] for d in detections])
 
     # ===== Geminiで被害予測 =====
     st.subheader("Geminiによる被害予測結果")
@@ -104,6 +107,7 @@ if uploaded_file is not None:
             progress_bar.progress(i + 1)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

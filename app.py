@@ -97,11 +97,12 @@ if uploaded_file is not None:
     with st.spinner("Geminiが被害を推定中です..."):
         response = model_gemini.generate_content(prompt)
         progress_bar = st.progress(0)
-            for i in range(100):
-                time.sleep(0.1)
-                progress_bar.progress(i + 1)
+        for i in range(100):
+            time.sleep(0.1)
+            progress_bar.progress(i + 1)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

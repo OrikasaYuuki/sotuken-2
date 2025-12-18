@@ -93,6 +93,7 @@ if uploaded_file is not None:
     JSONの中身は表示せず、被害説明のみを日本語で出力してください。
     各物体の被害説明以外の文章は出力しないでください。
     各被害説明は過剰書きで出力してください。
+    各物体の名称は太字で表してください。
     ---
     {json.dumps(json_output, ensure_ascii=False, indent=2)}
     ---
@@ -107,6 +108,7 @@ if uploaded_file is not None:
             progress_bar.progress(i + 1)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

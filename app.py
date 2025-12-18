@@ -27,11 +27,13 @@ with open("memory.txt", "r" , encoding="utf-8") as f:
 # YOLOモデル読み込み
 model = YOLO(MODEL_PATH)
 
-# ====== Streamlit UI ======
+
+# ====== sidebar UI ======
 st.sidebar.title("test")
 st.sidebar.write("画像をアップロードすると、物体検出と被害予測を行います。")
 uploaded_file = st.sidebar.file_uploader("画像を選択してください", type=["jpg", "jpeg", "png"])
 
+# ====== main UI ======
 st.title("災害被害予測システム")
 st.write("画像をアップロードすると、物体検出と被害予測を行います。")
 
@@ -52,10 +54,6 @@ if uploaded_file is not None:
         st.warning("画像から物体が検出されませんでした。" \
         "申し訳ありませんが、別の画像でお試しください。")
         st.stop()   # ← ここで処理を終了（Geminiへ進まない）
-
-    # 検出結果の可視化
-    res_img = results[0].plot()
-    st.image(res_img, caption="検出結果", use_column_width=True)
 
     # 検出結果をJSONに変換
     detections = []
@@ -106,6 +104,7 @@ if uploaded_file is not None:
             progress_bar.progress(i + 1)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

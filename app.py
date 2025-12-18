@@ -28,13 +28,17 @@ with open("memory.txt", "r" , encoding="utf-8") as f:
 model = YOLO(MODEL_PATH)
 
 # ====== Streamlit UI ======
+st.sidebar.title("test")
+st.sidebar.write("画像をアップロードすると、物体検出と被害予測を行います。")
+uploaded_file = st.sidebar.file_uploader("画像を選択してください", type=["jpg", "jpeg", "png"])
+
 st.title("災害被害予測システム")
 st.write("画像をアップロードすると、物体検出と被害予測を行います。")
 
 with st.expander('変更記録'):
     st.text(memory)
 
-uploaded_file = st.file_uploader("画像を選択してください", type=["jpg", "jpeg", "png"])
+
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
@@ -102,6 +106,7 @@ if uploaded_file is not None:
             progress_bar.progress(i + 1)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

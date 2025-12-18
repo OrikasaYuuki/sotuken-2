@@ -86,6 +86,7 @@ if uploaded_file is not None:
     その上でclass_nameを日本語に直し、災害時に想定される被害を説明してください。
     JSONの中身は表示せず、被害説明のみを日本語で出力してください。
     各物体の被害説明以外の文章は出力しないでください。
+    各被害説明は過剰書きで出力してください。
     ---
     {json.dumps(json_output, ensure_ascii=False, indent=2)}
     ---
@@ -96,6 +97,7 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

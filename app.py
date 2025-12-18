@@ -37,7 +37,7 @@ uploaded_file = st.file_uploader("画像を選択してください", type=["jpg
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="入力画像", width=True)
+    st.image(image, caption="入力画像", use_column_width=True)
 
     # ===== YOLO検出 =====
     st.subheader("物体検出中...")
@@ -50,7 +50,7 @@ if uploaded_file is not None:
 
     # 検出結果の可視化
     res_img = results[0].plot()
-    st.image(res_img, caption="検出結果", width=True)
+    st.image(res_img, caption="検出結果", use_column_width=True)
 
     # 検出結果をJSONに変換
     detections = []
@@ -96,6 +96,7 @@ if uploaded_file is not None:
         response = model_gemini.generate_content(prompt)
     st.success("被害予測が完了しました")
     st.write(response.text)
+
 
 
 

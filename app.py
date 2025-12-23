@@ -44,7 +44,8 @@ if uploaded_file is not None:
     st.image(image, caption="入力画像", use_column_width=True)
 
     # ===== YOLO検出 =====
-    st.subheader("物体検出中...")
+    st.spinner("物体検出中...")
+    # st.subheader("物体検出中...")
     results = model(image)
 
     if len(results[0].boxes) == 0:
@@ -105,22 +106,3 @@ if uploaded_file is not None:
             progress_bar.progress(i + 1)
     st.success("被害予測が完了しました")
     st.write(response.text)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

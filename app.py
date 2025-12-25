@@ -28,7 +28,12 @@ with open("memory.txt", "r" , encoding="utf-8") as f:
     
 # YOLOモデル読み込み
 model = YOLO(MODEL_PATH)
+
 return_text = ""
+history = []
+
+if "history" not in st.session_state:
+        st.session_state.history = []
 
 # ====== sidebar UI ======
 st.sidebar.title("画像アップロード")
@@ -109,21 +114,34 @@ def main():
                 time.sleep(0.1)
                 progress_bar.progress(i + 1)
         st.success("被害予測が完了しました")
-        return_text = response.text
         st.write(response.text)
 
+        return_text = response.text
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        filename = f"/response_{datetime.now().strftime('%y-%m-%d')}.txt"
+        entry = {
+            "time":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "text":return_text
+        }
+        history.apend(entry)
+        st.sesseon_state.history.append(return_text)
 
-        with open(RESPONS_PATH + filename, mode='w', encoding="utf-8") as f:
-            f.write("=" * 60 + "\n")
-            f.write(f"実行日時: {timestamp}\n")
-            f.write(return_text + "\n\n")
+def history():
+    st.header("履歴")
+
+    if not st.session_state.history:
+        st.info("履歴はありません")
+    else:
+        for i, h in enumerate(st.session_state.history, 1):
+            st.text_area(f"履歴 {i}", h, height=150)
 
 tab_interface,tab_history = st.tabs(["被害予測", "履歴"])
 
 with tab_interface:
     main()
+
+with tab_history:
+    history()
+
 
 
 

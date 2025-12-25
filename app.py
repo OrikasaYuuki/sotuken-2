@@ -132,7 +132,7 @@ def save_history():
         st.info("履歴はありません")
     else:
         for i, h in enumerate(st.session_state.history, 1):
-            st.text_area(f"履歴 {i}", h, height=150)
+            st.text_area(f"履歴-{i}", h, height=300)
 
 tab_interface,tab_history = st.tabs(["被害予測", "履歴"])
 
@@ -141,6 +141,7 @@ with tab_interface:
 
 with tab_history:
     save_history()
+
 
 
 

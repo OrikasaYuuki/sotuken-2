@@ -123,7 +123,7 @@ def main():
             "text":return_text
         }
         history.append(entry)
-        st.sesseon_state.history.append(return_text)
+        st.session_state.history.append(return_text)
 
 def save_history():
     st.header("履歴")
@@ -141,6 +141,7 @@ with tab_interface:
 
 with tab_history:
     save_history()
+
 
 
 

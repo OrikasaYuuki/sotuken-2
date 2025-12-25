@@ -119,3 +119,9 @@ def main():
             f.write("=" * 60 + "\n")
             f.write(f"実行日時: {timestamp}\n")
             f.write(return_text + "\n\n")
+
+tab_interface,tab_history = st.tabs(被害予測, 履歴)
+
+with tab_interface:
+    main()
+

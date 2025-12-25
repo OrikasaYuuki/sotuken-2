@@ -5,7 +5,7 @@ import google.generativeai as genai
 import json
 import time
 import io
-import datetime
+from datetime import datetime
 import os
 
 
@@ -124,6 +124,7 @@ tab_interface,tab_history = st.tabs(["被害予測", "履歴"])
 
 with tab_interface:
     main()
+
 
 
 

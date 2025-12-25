@@ -115,7 +115,7 @@ def main():
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         filename = f"/response_{datetime.now().strftime('%y-%m-%d')}.txt"
 
-        with open(RESPONS_PATH + filename, "a", mode='w', encoding="utf-8") as f:
+        with open(RESPONS_PATH + filename, mode='w', encoding="utf-8") as f:
             f.write("=" * 60 + "\n")
             f.write(f"実行日時: {timestamp}\n")
             f.write(return_text + "\n\n")
@@ -124,6 +124,7 @@ tab_interface,tab_history = st.tabs(["被害予測", "履歴"])
 
 with tab_interface:
     main()
+
 
 
 

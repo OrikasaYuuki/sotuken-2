@@ -122,7 +122,7 @@ def main():
             "time":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "text":return_text
         }
-        history.apend(entry)
+        history.append(entry)
         st.sesseon_state.history.append(return_text)
 
 def history():
@@ -141,6 +141,7 @@ with tab_interface:
 
 with tab_history:
     history()
+
 
 
 

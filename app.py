@@ -125,7 +125,7 @@ def main():
         history.append(entry)
         st.sesseon_state.history.append(return_text)
 
-def history():
+def save_history():
     st.header("履歴")
 
     if not st.session_state.history:
@@ -140,7 +140,8 @@ with tab_interface:
     main()
 
 with tab_history:
-    history()
+    save_history()
+
 
 
 

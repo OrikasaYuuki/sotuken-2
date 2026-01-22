@@ -14,8 +14,6 @@ import cv2
 cv2.imshow = lambda *args, **kwargs: None
 cv2.namedWindow = lambda *args, **kwargs: None
 
-# ====== 設定 ======
-# Gemini APIキー（安全のためファイルから読み込むのが望ましい）
 MODEL_PATH = "./last.pt"
 MEMORY_PATH = "./memory.txt"
 JSON_PATH = "./result.json"
@@ -26,7 +24,6 @@ genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 with open("memory.txt", "r" , encoding="utf-8") as f:
     memory = f.read()
     
-# YOLOモデル読み込み
 model = YOLO(MODEL_PATH)
 
 return_text = ""
@@ -35,13 +32,11 @@ history = []
 if "history" not in st.session_state:
         st.session_state.history = []
 
-# ====== sidebar UI ======
 st.sidebar.title("画像アップロード")
 st.sidebar.write("画像をアップロードすると、物体検出と被害予測を行います。")
 uploaded_file = st.sidebar.file_uploader("画像を選択してください", type=["jpg", "jpeg", "png"])
 
 def main():
-    # ====== main UI ======
     st.title("災害被害予測システム")
     st.write("画像をアップロードすると、物体検出と被害予測を行います。")
 
@@ -60,7 +55,7 @@ def main():
         if len(results[0].boxes) == 0:
             st.warning("画像から物体が検出されませんでした。" \
             "申し訳ありませんが、別の画像でお試しください。")
-            st.stop()   # ← ここで処理を終了（Geminiへ進まない）
+            st.stop()   
         
         # 検出結果の可視化
         res_img = results[0].plot()
@@ -89,9 +84,6 @@ def main():
         with open(JSON_PATH, "w", encoding="utf-8") as f:
             json.dump(json_output, f, indent=2, ensure_ascii=False)
 
-        # st.write("検出された物体:", [d["class_name"] for d in detections])
-
-        # ===== Geminiで被害予測 =====
         st.subheader("Geminiによる被害予測結果")
 
         prompt = f"""
@@ -141,13 +133,3 @@ with tab_interface:
 
 with tab_history:
     save_history()
-
-
-
-
-
-
-
-
-
-
